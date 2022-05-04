@@ -9,11 +9,11 @@ def index():
     return render_template('index.html')
 
 @app.route('/departures/<departure>/')
-def index():    
+def departure():    
 
     return render_template('departure.html')
 
 @app.route('/tours/<id>/')
-def index():    
+def tour():    
 
     return render_template('tour.html')
