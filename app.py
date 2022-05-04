@@ -1,11 +1,19 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def index():
-    return render_template(
-        'index.html',
-    )
+def index():    
+
+    return render_template('index.html')
+
+@app.route('/departures/<departure>/')
+def index():    
+
+    return render_template('departure.html')
+
+@app.route('/tours/<id>/')
+def index():    
+
+    return render_template('tour.html')
