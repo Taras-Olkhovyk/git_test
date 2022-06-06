@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    /* обнуляющие теги*/
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+
+/*LOGO*/
+
+.logo img {
+    float: left;
+    margin-left: 80px;
+    width: 145px;
+}
+
+
+/*MAIN MENU*/
+
+.header {
+    height: 140px;
+    background-image: linear-gradient(60deg, #abecd6 0%, #069bae, #fce97f);
+}
+
+.main_menu {
+    display: flex;
+    /* розворачиваем в строку */
+    justify-content: flex-end;
+    /*  перевести в конец*/
+    padding-right: 60px;
+    /* отступ от правой граници */
+}
+
+.main_menu a {
+    text-decoration: none;
+    /* убираем подчеркивание */
+    color: darkslategray;
+    font-weight: 400;
+    /* толщина букв */
+}
+
+.main_menu li {
+    list-style: none;
+    /* убираем напроти слов кружочки */
+    margin-right: 10px;
+    /* отступ между словами */
+    width: 140px;
+    /* ширина поля вокруг слова */
+    margin-top: 5%;
+    /* отступ от верха */
+    box-shadow: 10px 10px 10px grey;
+    /* тени полей */
+    font-family: monospace;
+    /* шрифт */
+    border-radius: 100px;
+    /* закругляем поля*/
+    text-align: center;
+    /* розмещаем слова по центру поля */
+}
+
+.main_menu li:hover {
+    transition-duration: 1s;
+    /* фнимация при наведении */
+    box-shadow: 5px 5px 50px grey;
+}
+
+.main_menu p {
+    font-size: 18px;
+    padding-top: 10px;
+}
+
+
+/* MAIN_PAGE */
+
+.info {
+    display: flex;
+    margin: 80px auto 0;
+    width: 80%;
+    box-shadow: -5px 15px 10px skyblue;
+    align-items: center;
+    border-radius: 200px;
+    font-family: monospace;
+}
+
+
+/* BLOCK_CONTENT */
+
+.content {
+    width: 100%;
+    align-items: center;
+    margin: 0 auto;
+    flex: 1 1 auto;
+}
+
+
+/* WRAPPER */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.description {
+    font-size: 35px;
+    margin: 0 auto;
+    /*разместить по центру*/
+    text-align: right;
+}
+
+.names {
+    box-shadow: -5px 15px 10px skyblue;
+    border-radius: 200px;
+    padding: 10px 20px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.desc {
+    width: 100%;
+    font-weight: 600;
+    color: dodgerblue;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0px 0px 0px skyblue;
+    border-radius: 200px;
+}
+
+.desc li {
+    margin-bottom: 10px;
+    /* отступ с низу */
+    font-style: normal;
+    /**/
+    box-shadow: 5px 3px 10px grey;
+    font-size: 25px;
+    /**/
+    padding: 5px;
+    font-family: monospace;
+    border-radius: 200px;
+    letter-spacing: 2px;
+}
+
+ul.checkmark li::before {
+    content: "\2713\0020";
+    /* птичка перед словом*/
+    color: forestgreen;
+}
+
+.ul a {
+    text-decoration: none;
+    color: mediumaquamarine;
+}
+
+.checkmark li:hover {
+    transition-duration: 0.1s;
+    box-shadow: 0px 12px 10px orange;
+}
+
+.checkmark li {
+    list-style: none;
+}
+
+
+/* FOOTER */
+
+.footer {
+    display: flex;
+    height: 100px;
+    /* высота */
+    background-color: antiquewhite;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex: 0 0 auto;
+    width: 100%;
+    /* ширина */
+    font-family: monospace;
+}
