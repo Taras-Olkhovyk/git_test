@@ -12,9 +12,11 @@ bcrypt = Bcrypt()
 
 def create_app():
     app = Flask(__name__)
+    
+    app.config['SQLALCHERMY_DATABASE_URI'] = 'sqlite:///test.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHERMY_DATABASE_URI'] = 'swlite:///test.db'
     app.config.from_pyfile('settings.py')
+    
     db.init_app(app)
     bcrypt.init_app(app)
 
