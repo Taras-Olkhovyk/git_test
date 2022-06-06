@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(1020), unique=True, nullable=False) 
     image_file = db.Column(db.String(60), nullable=False, default='default.jpg') 
     password = db.Column(db.String(60), nullable=False) 
-    post = db.relationship('Post', backref='author', lazy=True)   # отношение между таблицей юзер и постом
+    #post = db.relationship('Post', backref='author', lazy=True)   # отношение между таблицей юзер и постом
         
     def __repr__(self):
         return f'User({self.username}, {self.email}, {self.password})'
