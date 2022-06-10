@@ -1,0 +1,42 @@
+
+
+from crypt import methods
+from flask import Blueprint, flash, redirect, render_template, url_for
+from flask_login import current_user, login_required
+from blog.models import Post
+from blog.post.forms import PostForm
+from blog.post.utils import save_picture_post
+from blog import db
+
+
+
+posts = Blueprint('post', __name__)
+
+
+# картинки храним в папкаж а вбазе ссылки на картинки
+@posts.route('/post/new', methods=['GET', 'POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, image_post=form.picture.data, author=current_user)
+        picture_file = save_picture_post(form.picture.data)
+        post.image_post = picture_file
+        db.session.add(post)
+        db.session.commit()
+        flash('Пост был опубликован!', 'success')
+        return redirect(url_for('main.blog'))
+    # Аватарка пользователя, маршрут з картинкой
+    image_file = url_for('static', filename=f'profile_pics/' + current_user.username + '/post_images/' + current_user.image_file)
+    return render_template('create_post.html', title='Новая статья', form=form, legend='Новая статья', image_file=image_file)    
+
+
+@posts.route('/post/<int:post_id>')
+@login_required
+def post(post_id):
+    # если нет айди вывести ошибку 404
+    post = Post.query.get_or_404(post_id)
+    # маршрут з картинкой
+    image_file = url_for('static',
+                         filename=f'profile_pics/' + post.author.username + '/post_images/' + post.image_post)
+    return render_template('post/post.html', title=post.title, post=post, image_file=image_file)
