@@ -1,30 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="login_form">
-                                          <!-- загрузка изображений -->  
-    <form action="" class="form_sign_in" enctype="multipart/form-data" method="POST">
+<h3 style="text-align: center; color: blue; margin-top: 120px;">Акаунт пользователя {{ current_user.username }}</h3>
+<h4 style="text-align: center;">{{ current_user.email }}</h4>
+<h4 style="text-align: center;">{{ current_user.password }}</h4>
+<br>
+<h4 style="text-align: center;">{{ current_user.last_seen }}</h4>
 
-        <!-- сикрет код -->
-        {{ form.hidden_tag() }}
-
-        <legend class="legend">{{ legend }}</legend>
-
-        <!-- обработка ошибок -->
-        <div class="invalid-feedback">
-            {% for errors in form.title.errors %}
-            <span>{{ error }}</span>
-            {% endfor %}
-        </div>
-
-        {{ form.title(class='form-post-title', placeholder='Заголовок') }}
-
-        {{ form.content(class='form-post-textarea', placeholder='Текст статьи') }}
-        {{ form.picture }}
-</div>
-
-        {{ form.submit(class='btn_new_post') }}
-
-    </form>
-</div>
 {% endblock content %}

@@ -6,7 +6,7 @@ import shutil
 from flask_login import current_user, login_required, logout_user, login_user
 
 
-from blog.models import User
+from blog.models import Post, User
 from blog import bcrypt, db
 from flask import Blueprint, flash, redirect, render_template, url_for, request
 from blog.user.forms import RegistrationForm, LoginForm
@@ -58,6 +58,13 @@ def login():
     return render_template('login.html', form=form, title="Авторизация", legend="Войти")
 
 
+@users.route('/user/<string:username>')
+def user_posts(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(author=user).order_by(Post.date_posted.desc()).paginate(page=page, per_page=3)
+
+    return render_template('user_posts.html', title='Блог>', posts=posts, user=user)
 
 @users.route('/account', methods=['GET', 'POST'])
 @login_required

@@ -39,4 +39,4 @@ def post(post_id):
     # маршрут з картинкой
     image_file = url_for('static',
                          filename=f'profile_pics/' + post.author.username + '/post_images/' + post.image_post)
-    return render_template('post/post.html', title=post.title, post=post, image_file=image_file)
+    return render_template('post.html', title=post.title, post=post, image_file=image_file)
