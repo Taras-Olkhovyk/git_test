@@ -16,6 +16,9 @@
     .logo img {
         width: 180px;
     }
+    .empty_block {
+        height: 35px;
+    }
     .description {
         font-size: 30px;
     }
